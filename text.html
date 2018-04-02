@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta name="description" content="私银贵族是中国第一家互联网+私人银行。是用互联网、大数据、云计算等手段构建的一款连接高净值投资顾问、高净值客户的互联网一站式私人银行移动平台。私银贵族以“金融+非金融+俱乐部活动”的三架马车服务模式汇聚全球优势资源，打造贵族精神的特色私人银行级服务品牌。"/>
+<meta name="keywords" content="私银贵族,私人银行，私人订制，俱乐部,资金管理,投资,金融产品,基金,信托,川普,特朗普,朱波"/>
+<meta content="caibaojian" name="author"/>
+<title>首页</title>
+<link rel="stylesheet" href="css/base.css">
+<script type="text/javascript">
+//引入该flexible.min.js
+!function(e,t){function n(){var n=l.getBoundingClientRect().width;t=t||540,n>t&&(n=t);var i=100*n/e;r.innerHTML="html{font-size:"+i+"px;}"}var i,d=document,o=window,l=d.documentElement,r=document.createElement("style");if(l.firstElementChild)l.firstElementChild.appendChild(r);else{var a=d.createElement("div");a.appendChild(r),d.write(a.innerHTML),a=null}n(),o.addEventListener("resize",function(){clearTimeout(i),i=setTimeout(n,300)},!1),o.addEventListener("pageshow",function(e){e.persisted&&(clearTimeout(i),i=setTimeout(n,300))},!1),"complete"===d.readyState?d.body.style.fontSize="16px":d.addEventListener("DOMContentLoaded",function(e){d.body.style.fontSize="16px"},!1)}(750,750);
+</script>
+<style>
+    .ul{
+        
+        width: 95%;
+        margin:0.1rem auto;
+    }
+    ul li{
+        width: 48%;
+        height:3rem;
+        box-shadow: 0 0 5px #000;
+        margin:0 1%;
+        float: left;
+    }   
+    ul li img{
+        width: 80%;
+        margin:0 auto;
+        height:2rem;
+        display:block;
+        background:pink;
+    }
+    li div{
+        text-align: center;
+        display:block;
+        width: 100%;
+    }
+</style>
+</head>
+<body class="body">
+    <ul class="ul">
+        <!-- http://www.jb51.net/article/118502.htm -->
+        <!-- <li> -->
+            <!-- <input type="button" value="点我显示文字" class="btn" /> -->
+           <!--  <img src="" alt="" />
+            <div>名称：<span class="name">110</span></div>
+            <div>价格：<span class='price'>$11</span></div>
+        </li> -->
+
+    </ul>
+    <script src="js/zepto.min.js"></script>
+    <script>
+
+    // $('.btn').click(function(){
+    //     var str=$.ajax({url:"./json/json.json",async:false})
+    //     // console.log(str)
+    //     $('li').html(str.responseText.books)
+    // })
+    $.ajax({
+        url:'./json/json.json',
+        type:'get',
+        data:{},
+        success:function(data){
+            var data=data.books;
+            $.each(data,function(index,ele){
+                var str='';
+                console.log(ele)
+                str+="<li><a href='text_info.html?id="+ele.id+" ' ><img src="+ele.imgUrl+" alt='' /></a><div>名称：<span class='name'>"+ele.title+"</span></div><div>价格：<span class='price'>"+ele.price+"</span></div></li>"
+                $('.ul').append(str)
+            })
+           
+        }
+    })
+
+    </script>
+</body>
+</html>

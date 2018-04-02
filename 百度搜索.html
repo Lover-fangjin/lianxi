@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR"></script>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .container{width: 800px;margin: 50px auto;position: relative;}
+    input{padding: 5px 10px;}
+    #tx{width: 80%;}
+    #btn{width: 15%;}
+    .list-wrap{list-style: none;width: 80%;position: absolute;top: 100%;left: 0;border: 1px solid #ddd;}
+    .list-wrap li{height: 30px;line-height: 30px;}
+    .list-wrap li:hover{background-color: #eee;cursor: pointer;}
+    #map{
+        width: 500px;
+        height:300px;
+        margin:0 auto;
+        border:1px solid #000;
+    }
+    </style>
+</head>
+<body>
+    <div id="map">
+        
+    </div>
+    <div class="container">
+        <div class="text-wrap">
+            <input type="text" id="tx" placeholder="pls enter your search key">
+            <input type="button" value="Search" id="btn" onclick="city()">
+        </div>
+        <ul class="list-wrap"></ul>
+        <div class="search-content"></div>
+    </div>
+</body>
+<script src="js/zepto.min.js"></script>
+<script>
+    var map = new BMap.Map('map');
+    var point = new BMap.Point(116.404, 39.915);
+    map.centerAndZoom(point,15);
+    
+    function city(){
+        var city=$('#tx').val();
+        if(city!=''){
+            map.centerAndZoom(city,15);
+        }
+    }
+
+    let input = document.querySelector('#tx');
+    function addScript(url) {
+        let script = document.createElement('script');
+        script.setAttribute("type", "text/javascript");
+        script.src = url;
+        document.body.appendChild(script);
+    }
+    input.onkeyup = function (e) {
+        let val = this.value;
+        addScript('http://suggestion.baidu.com/su?wd=' + val + '&cb=show');
+    }
+    function show(result) {
+        // console.log(result.s);
+        let arr = result.s;
+        let listWrap = document.querySelector('.list-wrap');
+        let container = document.querySelector('.container');
+        let domStr = '';
+        for (let i = 0; i < arr.length; i++) {
+            domStr += '<li class="list">' + arr[i] + '</li>';
+        }
+        listWrap.innerHTML = domStr;
+        let list = document.querySelectorAll('.list');
+
+        listWrap.addEventListener('click', function (e) {
+            // console.log(e.target);
+            let xhr = new XMLHttpRequest();
+            let url = 'http://www.baidu.com/s?wd='
+            if (e.target.tagName.toUpperCase() == 'LI') {
+                input.value = e.target.textContent;
+                this.innerHTML = null;
+            }
+            addScript(url + input.value); //要怎么拿到这个动态插入的script标签请求返回的html文件？
+            //直接用这个url: 'url + input.value'发请求会造成跨域，请求不到数据
+
+            let scrConts = Array.from(document.querySelectorAll('script'));
+            let s = scrConts.filter(item => {
+                return /http\:\/\/suggestion\.baidu\.com/.test(item.src);
+            });
+            for (let i = 0; i < s.length; i++) {
+                document.body.removeChild(s[i]); //删除带http://suggestion.baidu.com/的script标签
+            }
+        }, false);
+
+    }
+    
+</script>
+</html>

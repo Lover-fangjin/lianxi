@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .up {
+                width:300px;
+                height:30px;
+                line-height:30px;
+                border:1px solid #ccc;
+            }
+            .content {
+                width:0px;
+                text-align:center;
+                background:deeppink;
+            }
+            .button {
+                margin-top:10px;
+            }
+            .down {
+                width:150px;
+                height:150px;
+                margin-left:30%;
+                margin-top:10%;
+                border:1px solid #ccc;
+                visibility:hidden;
+            }
+            .active {
+                visibility:visible;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="up">
+            <div class="content">
+                0%
+            </div>
+        </div>
+        <div class="button">
+            <button id="strat">开</button>
+            <button id="stop">关</button>
+        </div>
+    </body>
+    <script src="js/zepto.min.js"></script>
+    <script>
+        //获取dom对象
+        var content = document.getElementsByClassName('content')[0];
+            // content = content[0];
+        var up = document.getElementById('strat');
+        var stop = document.getElementById('stop');
+        var go; //设置定时的名字
+        var bool = true; //用于判断是否点击了按钮
+        var down = document.getElementsByClassName('down')[0];
+        up.onclick = function() {
+            if (bool) {
+                //如果点击了就改为false
+                bool = false;
+                timer = setInterval(function() {
+                    if (content.offsetWidth < 298) {
+                        content.style.width = content.offsetWidth + 3 + 'px';
+
+                        content.innerHTML = parseInt(content.offsetWidth / 3) + '%';
+                        content.style.backgroundColor=Math.random()
+                    } else {
+                        content.style.backgroundColor = 'lime';
+                        setTimeout(function() {
+
+                            content.innerHTML = '小朋友 ok啦！';
+
+                            clearInterval(go);
+                        }, 100);
+                    }
+
+                }, 30)
+            }
+        }
+        stop.onclick = function() {
+            bool = true;
+            clearInterval(timer);
+        }
+
+
+    </script>
+</html>

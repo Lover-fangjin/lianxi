@@ -1,0 +1,136 @@
+/* 
+* @Author: Busy
+* @Date:   2017-12-18 18:50:18
+* @Last Modified by:   Busy
+* @Last Modified time: 2017-12-19 12:33:15
+*/
+header{
+    width: 100%;
+    background: #fff;
+    height: 40px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9;
+    padding:0.2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+header a{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 10%;
+    height: 100%;
+    text-align: center;
+    line-height: 3rem;
+}
+header a{
+    background:url(../img/00.jpg) no-repeat center;
+    background-size:30%;
+}
+header h3{
+    color: #353535;
+    width: 100%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+}
+.wrap{
+    width:100%;
+    height:100%;
+    background: url(../img/bg_02.jpg);
+    background-size: 100%;
+    margin-top:2rem;
+}
+.wrap-zu{
+    background: url(../img/bg_03.jpg);
+    width:100%;
+    height:100%;
+    background-size: 100%;
+    margin-top:2rem;
+    padding-bottom: 4rem;
+}
+ul{
+    width:100%;
+    height:100%;
+    
+}
+ul>li{
+    width:50.1%;
+    height:5rem;
+    margin-left: 10px;
+}
+.left{
+    float:left;
+}
+.right{
+    float:right;
+    margin-right:10px;
+}
+.right>h2,.right>p{
+    margin-left: 1.5rem;
+}
+.left>h2,.left>p{
+    margin-right:1.5rem;
+}
+.r1{
+    margin-top: 7.5rem;
+}
+.l1{
+    margin-top: 6.5rem;
+}
+.r2{
+    margin-top: 18.5rem;
+}
+.l2{
+    margin-top: 6.5rem;
+}
+.r3{
+    margin-top: 18.5rem;
+}
+.l3{
+    margin-top: 6.5rem;
+}
+.r4{
+    margin-top: 19rem;
+    margin-bottom: 5rem;
+}
+h2{
+    font-size: 1rem;
+    line-height:1.5rem;
+    color:#ff4c00;
+}
+h2 span{
+    font-size: 0.5rem;
+    margin-left: 0.5rem;
+}
+p{
+    color:#333333;
+    font-size: 0.6rem;
+    line-height: 1.0rem;
+}
+
+.clearfix:after, .clearfix:before {
+    content: '';
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+

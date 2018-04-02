@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.article{
+				width: 100%;
+				height: 100vh;
+				position: relative;
+				background: pink;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			.box{
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: deeppink;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				margin-left: calc(100%-50px);
+			}
+			i{
+				font-size: 19px;
+			}
+		</style>
+	</head>
+	<body>
+		<i class="fa fa-camera-retro fa-lg">我</i> 	
+		<div class="article">
+			<!-- <div class="box"></div> -->
+			<p class="title">CONTACT ME</p>
+			<ul class="email">
+			   <li><input type="text" name="name" placeholder="Name"></li>
+			   <li><input type="text" name="email" placeholder="Email Address"></li>
+			   <li><input type="text" name="number" placeholder="Phone Number"></li>
+			   <li class="message"><textarea name="message" placeholder="Message"></textarea> </li>
+			   <button class="btn btn-define">Submit</button>
+			   <a href="mailto" id="send"></a>
+			</ul>
+		</div>
+		<script src="./js/zepto.min.js"></script>
+		<script type="text/javascript">
+		
+//			function sendEmail(){
+			 var name=$("[name='name']").val(),
+			     email=$("[name='email']").val(),
+			     number=$("[name='number']").val(),
+			     message=$("[name='message']").val(),
+			     body="My Name is: "+name+"%0a%0d"
+			         +"My Email Address is: "+email+"%0a%0d"
+			   +"My Phone Number is: "+number+"%0a%0d"
+			   +"Message:"+"%0a%0d"+message;
+			 $("#send").attr("href","mailto:weikitss@163.com?body="+body);
+			 document.getElementById("send").click();
+			}
+			$(document).load(
+			 $(".btn").click(sendEmail);
+			);
+//			let h=window.innerHeight
+//			var aa=document.querySelector('.article')
+//			console.log(h)
+//			aa.style.height=h+'px'
+			
+		</script>
+		
+	</body>
+</html>

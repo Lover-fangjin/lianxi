@@ -1,0 +1,102 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<title>地图检索</title>
+<!--css-->
+<link href="style/demo.css" rel="stylesheet" type="text/css" />
+<!--javascript-->
+<script src="scripts/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="scripts/demo.js" type="text/javascript"></script>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR"></script>
+<script type="text/javascript"
+    src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+</head>
+<body>
+    <div class="demo_main" style="width: 70%;height: 90px;margin: 0px auto;">
+    
+            <div >
+            <a href="#"><img src="#" alt="这里是一个Logo"  style="width: 20%;height: 10%"/></a>
+            <hr/>
+            </div>
+        
+        <fieldset class="demo_content">
+            <div style="min-height: 450px; width: 100%;" id="map"></div>
+            <script type="text/javascript">
+                var markerArr = [ 
+                    {
+                        title : "安师大分部",
+                        point : "118.384668,31.288999",
+                        address : "芜湖市弋江区安徽师范大学",
+                        description : "安师大分部位于芜湖市弋江区安师大附近，为Ejob公司分部",
+                        tel : "10086"
+                    }, {
+                        title : "EasyJob总部",
+                        point : "118.361707,31.287487",
+                        address : "芜湖市弋江区 安徽信息工程学院",
+                        description : "Ejob大厦位于芜湖市弋江区鲁港附近，为Ejob公司综合研发及办公总部",
+                        tel : "10086"
+                    }, {
+                        title : "皖医分部",
+                        point : "118.36742,31.292764",
+                        address : "芜湖市弋江区皖南医学院",
+                        description : "皖医分部位于芜湖市弋江区皖医附近，为Ejob公司分部",
+                        tel : "10086"
+                    }, {
+                        title : "商贸分部",
+                        point : "118.37414,31.293319",
+                        address : "芜湖市弋江区安徽商贸职业技术学院",
+                        description : "商贸分部位于芜湖市弋江区商贸附近，为Ejob公司分部",
+                        tel : "10086"
+                    }, {
+                        title : "安机电分部",
+                        point : "118.367708,31.287641",
+                        address : "芜湖市弋江区安徽机电职业技术学院",
+                        description : "安机电分部位于芜湖市弋江区安机电附近，为Ejob公司安分部",
+                        tel : "10086"
+                    } 
+                ];
+
+                function map_init() {
+                    var map = new BMap.Map("map"); // 创建Map实例
+                    var point = new BMap.Point(118.373996, 31.287641); //地图中心点
+
+                    map.centerAndZoom(point, 15); // 初始化地图,设置中心点坐标和地图级别。
+                    map.enableScrollWheelZoom(true); //启用滚轮放大缩小
+                    // var myIcon=new BMap.Icon('./img/icon_position.png',new BMap.Size(300,157));
+                    // var marker2=new BMap.Marker(point,{icon:myIcon}) //创建标注
+                    // map.addOverlay(marker2);
+                    var point = new Array(); //存放标注点经纬信息的数组
+                    var marker = new Array(); //存放标注点对象的数组
+                    var myIcon=new BMap.Icon('img/icon_position.png',new BMap.Size(90,53))
+                    for (var i = 0; i < markerArr.length; i++) {
+
+                        var p0 = markerArr[i].point.split(",")[0]; //
+                        var p1 = markerArr[i].point.split(",")[1]; //按照原数组的point格式将地图点坐标的经纬度分别提出来
+
+                        point[i] = new window.BMap.Point(p0, p1); //循环生成新的地图点
+                        marker[i] = new window.BMap.Marker(point[i],{icon:myIcon}); //按照地图点坐标生成标记
+                        
+                        map.addOverlay(marker[i]);
+                        marker[i].setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+                    }
+                }
+                //异步调用百度js
+                function map_load() {
+                    var load = document.createElement("script");
+                    load.src = "http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR&callback=map_init";
+                    document.body.appendChild(load);
+                }
+                window.onload = map_load;
+            </script>
+        </fieldset>
+    </div>
+</body>
+</html>
+
+map

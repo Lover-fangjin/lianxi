@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head>
+<title>投资人信息</title>
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<link rel="stylesheet" href="./css/style.css">
+<style>
+p{
+    margin:0;
+    padding:0;
+}
+    .a{
+        width: 300px;
+        height: 40px;
+        line-height: 40px;
+        position:relative;
+        border:1px solid #000;
+    }
+    .a a{
+        text-decoration: none;
+        position:absolute;
+        top:0px;
+        right:20px;
+        color:#000;
+    }
+    .aa{
+        position:absolute;
+        text-align: center;
+        width: 100%;
+        display:none;
+        border:1px solid #000;
+        left:-1px;
+    }
+</style>
+</head>
+<body>
+    <!-- <select class="aa">
+        <option value="news">国家</option>
+        <option value="sports">美国</option>
+        <option value="sports">加拿大</option>
+        <option value="international">澳门</option>
+        <option value="international">中国</option>
+    </select> -->
+    
+    <div class="a">
+        <div class="con">国家</div>
+        <div class="aa">
+            <p>日本</p>
+            <p>美国</p>
+            <p>加拿大</p>
+            <p>澳门</p>
+            <p>中国</p>
+        </div>
+        <a href="#"></a>
+    </div>
+    <script src='js/jquery.min.js'></script>
+    <script>
+         $('.con').click(function(){
+            $('.aa').slideDown();
+            $('.a>a').text('<')    
+         })
+         $('.aa>p').click(function(){
+            // alert(1)
+            $('.con').text( $(this).text() )
+            $('.aa').hide();  
+            $('.a>a').text('>')      
+         }) 
+        
+    </script>
+</body>
+</html>

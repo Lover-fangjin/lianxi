@@ -1,0 +1,293 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />  
+<title>Hello, World</title>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR"></script>
+</head>
+<style>
+    #container{
+        width: 100%;
+        height:100%;
+        position: absolute;
+        top:50%;
+        left:50%;
+        margin-left: -260px;
+        margin-top: -250px;
+        width: 500px;
+        height:500px;
+    }
+    ul{
+        list-style: none;
+        width: 300px;   
+        padding: 0;
+        margin:0;
+        border: 1px solid #ccc;     
+        display: none;          
+        }
+    ul li{
+        list-style: none;
+        width: 300px;
+        height: 30px;
+        line-height: 30px;      
+        }
+    ul li a{
+        display: block;
+        color: #333;
+        text-decoration: none;
+    }
+    ul li:hover{
+        background: #ccc;
+    }
+</style>
+<body>
+    <div style='border:1px solid gray' id="container"></div>
+    <div id='r-result'>
+        城市名:<input id="cityName" type='text'>
+        <input type="button" value='查询' onclick="theLocation()" />
+        <ul id="ul">
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>
+<script src="js/zepto.min.js"></script>
+<script type="text/javascript">
+    var map = new BMap.Map("container");          // 创建地图实例
+    var points = new BMap.Point(116.404, 39.915);  // 创建点坐标
+    map.centerAndZoom(points, 15);                 // 初始化地图，设置中心点坐标和地图级别
+    var myIcon=new BMap.Icon('./img/icon_position.png',new BMap.Size(300,157));
+    var marker2=new BMap.Marker(points,{icon:myIcon}) //创建标注
+    map.addOverlay(marker2);//将标注添加到地图中
+
+    //百度api接口
+    function fn(data){
+        var ul=document.getElementById('ul');
+        var arr=data.s;
+        var html='';
+        for(var i=0;i<arr.length;i++){
+            // html+='<li>'+arr[i]+'</li>'
+            html+='<li><a href="https://www.baidu.com/baidu?tn=monline_3_dg&ie=utf-8&wd='+arr[i]+'" target="_blank">'+arr[i]+'</a></li>';
+            // html+="<li><a onclick='cc()'>"+arr[i]+"</a></li>";
+        }
+        ul.innerHTML=html
+    }
+
+    var oTxt=document.getElementById('cityName');
+    var oHead=document.getElementsByTagName('head')[0];
+    oTxt.onkeyup=function(){    
+    var oS=document.createElement('script');//动态添加script标签
+    oS.src='https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+oTxt.value+'&cb=fn';//从百度获取的接口数据
+    oHead.appendChild(oS);
+    if(oTxt.value!=''){ 
+        ul.style.display='block';
+    }else{
+        ul.style.display='none';
+        }
+    }
+
+
+    // 搜索定位城市中心
+    function theLocation(){
+        
+        var city=document.getElementById('cityName').value;
+        console.log(city)
+        if(city !=''){
+            map.centerAndZoom(city,11)
+        }
+
+
+    }
+
+
+    // 获取当前经纬度
+    // var geolocation = new BMap.Geolocation();
+    // geolocation.getCurrentPosition(function(r){
+    //     if(this.getStatus() == BMAP_STATUS_SUCCESS){
+    //         var mk = new BMap.Marker(r.point);
+    //         map.addOverlay(mk);
+    //         map.panTo(r.point);
+    //         alert('您的位置：'+r.point.lng+','+r.point.lat);
+    //     }
+    //     else {
+    //         alert('failed'+this.getStatus());
+    //     }        
+    //     },{enableHighAccuracy: true})
+
+
+    // 获取当前城市
+    // function myfn(result){
+    //     var cityName=result.name;
+    //     map.setCenter(cityName);
+    //     alert('当前定位城市'+cityName)
+    // }
+    // var myCity=new BMap.LocalCity();
+    // myCity.get(myfn)
+
+
+    // map.enableScrollWheelZoom(true); 
+    // map.removeOverlay(marker2); //删除点
+
+        // var markerArr =[
+        //         {
+            
+        //             "distance": "1636",
+        //             // "latitude": "39.999601",
+        //             // "longtitude": "116.34039",
+        //              point: "118.384668,31.288999",
+        //             "stationAddress": "清华大学东南门",
+        //             "stationId": "6",
+        //             "stationName": "液晶大厦"
+        //         },
+        //         {
+        //             "distance": "1638",
+        //             "latitude": "39.999695",
+        //             "longtitude": "116.34114",
+        //             "stationAddress": "北京市海淀区中关村东路8号",
+        //             "stationId": "5",
+        //             "stationName": "东升大厦"
+        //         },
+        //         {
+        //             "distance": "1694",
+        //             "latitude": "39.987568",
+        //             "longtitude": "116.323731",
+        //             "stationAddress": "中关村大街东",
+        //             "stationId": "1012",
+        //             "stationName": "中科大厦"
+        //         },
+        //         {
+        //             "distance": "1740",
+        //             "latitude": "40.000088",
+        //             "longtitude": "116.337663",
+        //             "stationAddress": "科技大厦C座",
+        //             "stationId": "1005",
+        //             "stationName": "清华科技园"
+        //         },
+        //         {
+        //             "distance": "1789",
+        //             "latitude": "40.000772",
+        //             "longtitude": "116.338809",
+        //             "stationAddress": "紫光大厦东",
+        //             "stationId": "1000",
+        //             "stationName": "紫光大厦"
+        //         },
+        //         {
+        //             "distance": "1984",
+        //             "latitude": "39.979476",
+        //             "longtitude": "116.321238",
+        //             "stationAddress": "人民大学北路",
+        //             "stationId": "1178",
+        //             "stationName": "中国人民大学"
+        //         },
+        //         {
+        //             "distance": "2362",
+        //             "latitude": "39.970698",
+        //             "longtitude": "116.36371",
+        //             "stationAddress": "北京邮电大学北门",
+        //             "stationId": "1153",
+        //             "stationName": "北京邮电大学"
+        //         },
+        //         {
+        //             "distance": "2587",
+        //             "latitude": "40.006707",
+        //             "longtitude": "116.332247",
+        //             "stationAddress": "清华大学正门",
+        //             "stationId": "1",
+        //             "stationName": "清华大学"
+        //         },
+        //         {
+        //             "distance": "2839",
+        //             "latitude": "39.992035",
+        //             "longtitude": "116.311298",
+        //             "stationAddress": "海淀新技术大厦停车场",
+        //             "stationId": "1179",
+        //             "stationName": "海淀新技术大厦"
+        //         },
+        //         {
+        //             "distance": "3098",
+        //             "latitude": "40.005905",
+        //             "longtitude": "116.319231",
+        //             "stationAddress": "中国邮政党校销亭",
+        //             "stationId": "1069",
+        //             "stationName": "圆明园遗址公园"
+        //         },
+        //         {
+        //             "distance": "3955",
+        //             "latitude": "40.000437",
+        //             "longtitude": "116.385144",
+        //             "stationAddress": "安翔北路",
+        //             "stationId": "1070",
+        //             "stationName": "解放军306医院"
+        //         }
+        //     ]
+
+        // var markerArr = [ 
+
+        //             {
+        //                 title : "安师大分部",
+        //                 point : "118.384668,31.288999",
+        //                 address : "芜湖市弋江区安徽师范大学",
+        //                 description : "安师大分部位于芜湖市弋江区安师大附近，为Ejob公司分部",
+        //                 tel : "10086"
+        //             }, {
+        //                 title : "EasyJob总部",
+        //                 point : "118.361707,31.287487",
+        //                 address : "芜湖市弋江区 安徽信息工程学院",
+        //                 description : "Ejob大厦位于芜湖市弋江区鲁港附近，为Ejob公司综合研发及办公总部",
+        //                 tel : "10086"
+        //             }, {
+        //                 title : "皖医分部",
+        //                 point : "118.36742,31.292764",
+        //                 address : "芜湖市弋江区皖南医学院",
+        //                 description : "皖医分部位于芜湖市弋江区皖医附近，为Ejob公司分部",
+        //                 tel : "10086"
+        //             }, {
+        //                 title : "商贸分部",
+        //                 point : "118.37414,31.293319",
+        //                 address : "芜湖市弋江区安徽商贸职业技术学院",
+        //                 description : "商贸分部位于芜湖市弋江区商贸附近，为Ejob公司分部",
+        //                 tel : "10086"
+        //             }, {
+        //                 title : "安机电分部",
+        //                 point : "118.367708,31.287641",
+        //                 address : "芜湖市弋江区安徽机电职业技术学院",
+        //                 description : "安机电分部位于芜湖市弋江区安机电附近，为Ejob公司安分部",
+        //                 tel : "10086"
+        //             } 
+        //         ];
+
+        // function map_init(){
+        //     var map= new BMap.Map('container');//创建地图实例
+        //     var point = new BMap.Point(118.373996, 31.287641); //地图中心点
+        //     // var point = new BMap.Point(116.404, 39.915);
+        //     map.centerAndZoom(point,15)
+        //     map.enableScrollWheelZoom(true);//鼠标可否滑动
+
+        //     var point = new Array(); //存放注点经纬度信息的数组
+        //     var marker=new Array(); //存放标注点对象数组
+            
+        //     var myIcon=new BMap.Icon('img/icon_position.png',new BMap.Size(90,53))
+        //     for(var i=0;i<markerArr.length;i++){
+                
+        //         var p0 = markerArr[i].point.split(",")[0]; //
+        //         var p1 = markerArr[i].point.split(",")[1]; //
+
+        //         point[i]=new BMap.Point(p0,p1); //循环生成新的地图点
+        //         marker[i] = new BMap.Marker(point[i],{icon:myIcon}); //按照地图点坐标生成标记
+
+        //         map.addOverlay(marker[i]);
+        //         marker[i].setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+        //     }
+        // }
+
+        // //异步调用百度js
+        // function map_load() {
+        //     var load = document.createElement("script");
+        //     load.src = "http://api.map.baidu.com/api?v=2.0&ak=IDvNBsejl9oqMbPF316iKsXR&callback=map_init";
+        //     document.body.appendChild(load);
+        // }
+        // window.onload = map_load;
+
+</script>

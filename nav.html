@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>nav二级导航</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            nav ul li{
+                float: left;
+                list-style: none;
+                padding:10px;
+                width: 80px;
+                text-align: center;
+            }
+            nav ul{
+                position: relative;
+            }
+            .jinrong ul{
+                width: 100%;
+                text-align: center;
+            }
+            .jr li{
+                padding:0;
+            }
+            .on{
+                color:red;
+            }
+            .jr{
+                display:none;
+            }
+        </style>
+    </head>
+    <body>
+        <nav  class="nav">
+            <ul>
+                <li>首页</li>
+                <li class="jinrong">
+                    <a href="#">金融产品</a>
+                    <ul class="jr">
+                        <li><a href="car.html">金融1</a></li>
+                        <li>金融1</li>
+                        <li>金融1</li>
+                        <li>金融1</li>
+                        <li>金融1</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">金融产品</a>
+                    <ul class="jr">
+                        <li>非金融</li>
+                        <li>非金融</li>
+                        <li>非金融</li>
+                        <li>非金融</li>
+                        <li>非金融</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">活动</a>
+                    <ul class="jr">
+                        <li>活动</li>
+                        <li>活动</li>
+                        <li>活动</li>
+                        <li>活动</li>
+                        <li>活动</li>
+                    </ul>
+                </li>
+                <li>往期回顾</li>
+                <li>首页</li>
+            </ul>
+        </nav>
+        <script src="./js/jquery.min.js"></script>
+        <script>
+            $(".nav>ul>li").hover(function(){      
+                $(".nav>ul>li").removeClass("on");     
+                $(this).addClass("on");      
+                $(this).find("ul").slideDown();     
+            },function(){       
+                $(this).removeClass("on");      
+                $(this).find("ul").slideUp();     
+            })
+        </script>
+    </body>
+</html>

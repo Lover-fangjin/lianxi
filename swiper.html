@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>更多</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="./css/a.css" />
+    <link rel="stylesheet" href="./css/swiper.min.css" />
+    <style>
+        .swiper-container{
+            width: 100%;
+            height: 13rem;
+            margin-top: 90px;
+        }
+        .swiper-containe img{
+            width: 100%;
+            height: auto;
+        }
+        /*.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+            bottom: 150px;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: #000;
+        }
+        .swiper-pagination-bullet {
+            width:33.3%;
+            height:100%;
+            background:red;
+            float:left;
+        }
+        .swiper-pagination-bullet {
+            width:33.3%;
+            height:100%;
+            background:red;
+            float:left;
+        }*/
+    </style>
+</head>
+    
+<body>
+    <header>
+        <a href="#">返回</a>
+        <span>首页</span>
+    </header>
+
+    <div class="box">
+    <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="img/20150522144636_FSxWE.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/20140826200200_KhaiE.jpg" alt="" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="img/a.jpg" alt="" />
+                </div>
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination">
+
+            </div>
+
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-buttx`on-next"></div> -->
+        </div>
+        
+    </div>
+
+    <script src="js/zepto.min.js"></script>
+    <script src="./js/swiper.js"></script>
+    <script>
+        var mySwiper = new Swiper ('.swiper-container', {
+            pagination: {//必须写 
+                el: '.swiper-pagination',//外面最大的盒子
+                clickable :true,
+            },
+            // autoplay:{ //自动切换并且触摸之后还可以自动
+            //     disableOnInteraction:true
+            // },
+            // loop:true, //循环切换
+
+            // navigation: { //左右切换
+            //     nextEl: '.swiper-button-next',
+            //     prevEl: '.swiper-button-prev',
+            // },
+
+        
+  }) 
+    </script>
+</body>
+</html>

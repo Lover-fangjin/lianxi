@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>如何开启定位</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="format-detection" content="email=no"/>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="screen" charset="utf-8" />
+    <style>
+        header{
+            width: 100%;
+            background: #fff;
+            height: 40px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 9;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        header i{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 12%;
+            height: 100%;
+            text-align: center;
+            line-height: 3rem;
+        }
+        header h3{
+            color: #353535;
+            width: 100%;
+            text-align: center;
+            line-height: 40px;
+            font-size: 18px;
+        }
+        section{
+            margin-top: 3rem;
+            z-index: 1;
+        }
+        .cloumn{
+            padding:1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .cloumn span{
+            font-size: 1.2rem;
+        }
+        .cloumn i{
+            display:inline-block;
+            float:right;
+            color:#ccc;
+            font-size: 1.5rem;
+        }
+        a img{
+            width:200px;
+            height:200px;
+        }
+        .dropdown{
+            width: 100px;
+            height:30px;
+            position:relative;
+        }
+        .dropdown a{
+            float: none;
+            color: #777777;
+            text-decoration: none;
+            /* text-shadow: 0 1px 0 #1b1b1b; */
+            padding: 20px 15px 20px;
+            display:block;
+         }
+        .dropdown-menu{
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            float: left;
+            min-width: 160px;
+            /* padding: 5px 0; */
+            margin: 0 0 0;
+            list-style: none;
+            background-color: rgba(256, 256, 256, 1);
+            background-color: rgb(256, 256,256);
+            /* border: 1px solid #ccc; */
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            -webkit-background-clip: padding-box;
+            -moz-background-clip: padding;
+            background-clip: padding-box;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <i> < </i>
+        <h3>如何开启定位</h3>
+    </header>
+    <a href="img/a.png" rel="prettyPhoto[pp_gal]" title="You can add caption to pictures.">
+    <img src="img/a.jpg" width="1920" height="1200" alt="Red round shape" />
+    </a>
+    <a href="img/b.jpg" rel="prettyPhoto[pp_gal]" title="You can add caption to pictures.">
+    <img src="img/a.jpg" width="1920" height="1200" alt="Red" />
+    </a>
+    <!-- <a href="#inline-1" rel="prettyPhoto" ><img src="img/0005018398945828_b.jpg" height="909" alt="" width="1024" /></a>
+    <div id="inline-1" class="hide">
+        <p>这里是普通的文本</p>
+        <p>今天给大家介绍的prettyPhoto希望大家能喜欢，这个是播放普通文本的html</p>
+    </div>
+    -->
+
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default">1</button>
+      <button type="button" class="btn btn-default">2</button>
+
+      <div class="btn-group" role="group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Dropdown
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Dropdown link</a></li>
+          <li><a href="#">Dropdown link</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <span>我们</span>
+            
+        </a>
+        <ul class="dropdown-menu too">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </li>
+
+    <script src='js/jquery.min.js' type="text/javascript" ></script>
+    <script src="./js/prettyPhoto.js" type="text/javascript" ></script>
+    <script src="./js/bootstrap.js"></script>
+    <script>
+
+        $("a[rel^='prettyPhoto']").prettyPhoto();
+        $('.dropdown a').hover(function(){
+            $('.dropdown-menu').show()
+        })
+        // $('.dropdown a').onmouseout(function(){
+        //     $('.dropdown-menu').hide()
+        // })
+    </script>
+</body>
+</html>

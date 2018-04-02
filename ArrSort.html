@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="phone">17600062936</div>
+        <script src="./js/zepto.min.js"></script>
+        <script>
+            var selfRanking='1111'
+            console.log( selfRanking.substr(0, 3) + '****' + selfRanking.substr(7) )
+            if(selfRanking.length>=4){
+                selfRanking = selfRanking.substr(0,4) + '...名'; 
+            }
+            alert(selfRanking)
+
+            // function NumAscSort(a,b)
+            //     {
+            //      return a - b;
+            //     }
+            // function NumDescSort(a,b)
+            //     {
+            //      return b - a;
+            //     }
+            // var arr = new Array( 4,6,1,4,3,7,3); 
+            // arr.sort(NumDescSort);
+            // // alert(arr+'从大到小');
+            // arr.sort(NumAscSort);
+            // // alert(arr+'从小到大');
+            
+            // function num(){
+            //     var phone = $('#phone').text();
+            //     var mphone = phone.substr(0, 3) + '****' + phone.substr(7);   
+            //     $('#phone').text(mphone)
+            // }
+            // num()
+
+            // // es6数组循环
+            // const s = new Set();
+
+            // [2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
+
+            // for (let i of s) {
+            //   console.log(i);
+            // }
+            
+        </script>
+    </body>
+</html>
